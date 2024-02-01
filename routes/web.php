@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailTrackingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// routes/web.php
+
+Route::get('/track-email/{token}/{email_id}', [EmailTrackingController::class, 'track'])->name('track-email');
+Route::get('/send-email', [EmailTrackingController::class, 'sendEmail']);
